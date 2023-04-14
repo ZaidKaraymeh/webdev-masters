@@ -1,0 +1,19 @@
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("/static/images/hero2.7e68d1f40362.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* opacity: 0.9; */
+}
+
+.language-logos {
+    background-color: rgb(32, 32, 32);
+}
+
+.language-logo {
+    width: 150px;
+    height: 150px;
+    margin: 0 10px;
+    padding: 5px;
+}
