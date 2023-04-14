@@ -17,3 +17,11 @@
     margin: 0 10px;
     padding: 5px;
 }
+
+.fs-p {
+    font-size: 1.25rem;
+}
+
+.bg-off-white {
+    background-color: #FAFAFA;
+}

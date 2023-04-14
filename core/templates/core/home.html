@@ -1,34 +1,93 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-
+{% extends 'base.html' %} {% load static %} {% block content %}
 
 <section class="hero">
-    <div class="d-flex flex-column justify-content-center align-items-center text-white " style="min-height: 600px;">
-        <h1>Start Your Web Development Journey</h1>
-        <h2>with In-Depth, Beginner</h2>
-        <h2>friendly Courses & One-To-One Mentoring</h2>
-        <a href="#" class="btn btn-primary btn-lg mt-3 p-3 w-100" style="max-width: 300px;" >Browse Courses</a>
-
-    </div>
+  <div
+    class="d-flex flex-column justify-content-center align-items-center text-white"
+    style="min-height: 600px"
+  >
+    <h1 class="text-center">Start Your Web Development Journey</h1>
+    <h2>with In-Depth, Beginner</h2>
+    <h2>friendly Courses & One-To-One Mentoring</h2>
+    <a
+      href="#"
+      class="btn btn-primary btn-lg mt-3 p-3 w-100"
+      style="max-width: 300px"
+      >Browse Courses</a
+    >
+  </div>
 </section>
 <section>
-
-    <div class="d-flex justify-content-evenly p-3 language-logos" style="min-height: 150px;">
-        <img class="language-logo" src="{% static 'images/html_logo.png' %}" alt="">
-        <img class="language-logo" src="{% static 'images/CSS3_logo.png' %}" alt="">
-        <img class="language-logo" src="{% static 'images/js_logo.png' %}" alt="">
-        <img class="language-logo" src="{% static 'images/python_logo.png' %}" alt="">
-        <img class="language-logo" src="{% static 'images/dj.jpg' %}" alt="">
-    </div>
+  <div
+    class="d-flex justify-content-evenly p-3 language-logos flex-xs-column flex-wrap"
+    style="min-height: 150px"
+  >
+    <img
+      class="language-logo"
+      src="{% static 'images/html_logo.png' %}"
+      alt=""
+    />
+    <img
+      class="language-logo"
+      src="{% static 'images/CSS3_logo.png' %}"
+      alt=""
+    />
+    <img class="language-logo" src="{% static 'images/js_logo.png' %}" alt="" />
+    <img
+      class="language-logo"
+      src="{% static 'images/python_logo.png' %}"
+      alt=""
+    />
+    <img class="language-logo" src="{% static 'images/dj.jpg' %}" alt="" />
+  </div>
 </section>
-<section class="container mt-5">
-    <div class="p-3">
-        <h3 class="text-center" >Hello</h3>
-        <h2 class="text-center">I'm Zaid Karaymeh.</h2>
-        <p class="text-center m-auto" style="max-width: 600px;" >Are you new or interested in learning web development? Don't worry, I've got your back! We will work together one-on-one live sessions to help you level up your skills. Let's make it happen!</p>
-    </div>
+<section class="bg-off-white">
+  <div class="p-3 container pt-5 ">
+    <h3 class="text-center ">Hello</h3>
+    <h2 class="text-center text-decoration-underline">I'm Zaid Karaymeh.</h2>
+    <p class="text-center m-auto fs-p" style="max-width: 600px">
+      Are you new or interested in learning web development? Don't worry, I've
+      got your back! We will work together one-on-one live sessions to help you
+      level up your skills. Let's make it happen!
+    </p>
+  </div>
 </section>
+<section class="bg-off-white"  >
+  <div class="container pt-5 " >
+    <h3 class="text-center mb-3 text-decoration-underline">Why learn programming skills with me?</h3>
+    <div class="row">
+      <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
+        <div class="card shadow">
+          <div class="card-body">
+            <h5 class="card-title border-bottom py-2">Beginner Friendly Material</h5>
+            <p class="card-text">
+              I will be taking you step by step while building projects. This way, you can learn the basics of programming and web development by asking questions and implementing what you learn.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
+        <div class="card shadow">
+          <div class="card-body">
+            <h5 class="card-title border-bottom py-2">Learn from an experienced software engineer</h5>
+            <p class="card-text">
+              With professional experience as a software engineer combined with my years of programming experience, I will be able to help you learn the skills you need to start your web development career.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
+        <div class="card shadow ">
+          <div class="card-body">
+            <h5 class="card-title border-bottom py-2">Real World Projects & Use Cases</h5>
+            <p class="card-text">
+                I will be teaching you how to build real world projects and use cases. This way, you will be able to apply what you learn in your future projects and start applying for web development jobs.
+            </p>
+          </div>
+        </div>
+      </div>
 
+    </div>
+  </div>
+</section>
 
 {% endblock content %}
