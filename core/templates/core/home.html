@@ -6,10 +6,9 @@
     style="min-height: 600px"
   >
     <h1 class="text-center">Start Your Web Development Journey</h1>
-    <h2>with In-Depth, Beginner</h2>
-    <h2>friendly Courses & One-To-One Mentoring</h2>
+    <h2>with In-Depth, Beginner Friendly <br /> Courses & One-To-One Mentoring</h2>
     <a
-      href="#"
+      href="#courses"
       class="btn btn-primary btn-lg mt-3 p-3 w-100"
       style="max-width: 300px"
       >Browse Courses</a
@@ -41,7 +40,7 @@
   </div>
 </section>
 <section class="bg-off-white">
-  <div class="p-3 container pt-5">
+  <div class="p-3 container py-5">
     <h3 class="text-center">Hello</h3>
     <h2 class="text-center text-decoration-underline">I'm Zaid Karaymeh.</h2>
     <p class="text-center m-auto fs-p" style="max-width: 600px">
@@ -51,7 +50,7 @@
     </p>
   </div>
 </section>
-<section class="bg-off-white">
+<section class="bg-white">
   <div class="container py-5">
     <h3 class="text-center mb-3 text-decoration-underline">
       Why learn programming skills with me?
@@ -108,18 +107,25 @@
             What projects will you build?
         </h3>
         <p class=" text-center text-muted" >These are some of the projects, more are getting added</p>
-        <ul class="d-flex flex-column justify-content-center align-items-center" >
-            <li>E-Commerce Store (With Payment Integration)</li>
-            <li></li>
-        </ul>
+        <div cass="d-flex flex-column justify-content-center align-items-center" style="max-width:500px;">
+            <ul class="" style=" list-style-position: inside;">
+                <li>E-Commerce Store (With Payment Integration)</li>
+                <li>Upload Media Files to Cloud Storage Provider</li>
+                <li>Build RESTful API's</li>
+                <li>Personal Portfolio Website</li>
+                <li>Blog Website</li>
+                <li>Log in and Sign up components and more</li>
+            </ul>
+
+        </div>
     </div>
 </section>
 <section class="bg-white pt-5">
-  <div class="container">
+  <div class="container" id="courses">
     <h2 class="text-center my-2 mb-4">Available Courses</h2>
-    <div class="row">
+    <div class="row"  >
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
-            <div class="card p-0" >
+            <div class="card p-0 shadow card-hover" >
                 <img src="{% static 'images/htmlcssjs.webp' %}" class="card-img-top p-0" alt="..." />
                 <div class="card-body">
                 <h5 class="border-bottom py-2 text-center fw-bold">HTML, CSS, and JavaScript Course</h5>
@@ -132,10 +138,49 @@
             </div>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
-            <div class="card p-0" >
+            <div class="card p-0 shadow card-hover" >
                 <img src="{% static 'images/djcourse.png' %}" class="card-img-top p-0" alt="..." />
                 <div class="card-body">
                 <h5 class="border-bottom py-2 text-center fw-bold">Python & Django Course</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
+            <div class="card p-0 shadow card-hover" >
+                <img src="{% static 'images/api.webp' %}" class="card-img-top p-0" alt="..." />
+                <div class="card-body">
+                <h5 class="border-bottom py-2 text-center fw-bold">REST API Development with Django</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
+            <div class="card p-0 shadow card-hover" >
+                <img src="{% static 'images/hero.png' %}" class="card-img-top p-0" alt="..." />
+                <div class="card-body">
+                <h5 class="border-bottom py-2 text-center fw-bold">Data Structures & Algorithms with Python</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
+            <div class="card p-0 shadow card-hover" >
+                <img src="{% static 'images/py-oop.jpg' %}" class="card-img-top p-0" alt="..." />
+                <div class="card-body">
+                <h5 class="border-bottom py-2 text-center fw-bold">Object Oriented Programming (OOP) with Python</h5>
                 <p class="card-text">
                     Some quick example text to build on the card title and make up the
                     bulk of the card's content.

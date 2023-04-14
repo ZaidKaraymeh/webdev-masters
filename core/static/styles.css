@@ -29,3 +29,17 @@
 .bg-aqua {
     background-color: #fafeff;
 }
+
+.card-hover {
+    transition: all .2s ease-in-out; 
+}
+
+.card-hover:hover h5 {
+    background: -webkit-linear-gradient(right, rgb(226, 62, 130),rgb(86, 241, 223));
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-hover:hover {
+    transform: scale(1.05);
+}
