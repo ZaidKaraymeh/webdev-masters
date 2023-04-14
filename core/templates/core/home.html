@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<section class="hero">
+    <div class="d-flex flex-column justify-content-center align-items-center text-white " style="min-height: 600px;">
+        <h1>Start Your Web Development Journey</h1>
+        <h2>with In-Depth, Beginner</h2>
+        <h2>friendly Courses & One-To-One Mentoring</h2>
+        <a href="#" class="btn btn-primary btn-lg mt-3 p-3 w-100" style="max-width: 300px;" >Browse Courses</a>
+
+    </div>
+</section>
+<section>
+
+    <div class="d-flex justify-content-evenly p-3 language-logos" style="min-height: 150px;">
+        <img class="language-logo" src="{% static 'images/html_logo.png' %}" alt="">
+        <img class="language-logo" src="{% static 'images/CSS3_logo.png' %}" alt="">
+        <img class="language-logo" src="{% static 'images/js_logo.png' %}" alt="">
+        <img class="language-logo" src="{% static 'images/python_logo.png' %}" alt="">
+        <img class="language-logo" src="{% static 'images/dj.jpg' %}" alt="">
+    </div>
+</section>
+
+
+{% endblock content %}
