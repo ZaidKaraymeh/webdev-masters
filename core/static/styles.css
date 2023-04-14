@@ -4,6 +4,9 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  width: auto;
+  height: auto;
+  display: block;
   /* opacity: 0.9; */
 }
 
