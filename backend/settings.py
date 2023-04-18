@@ -151,3 +151,5 @@ EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 if os.getcwd() == '/app':
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
     MIDDLEWARE = [*MIDDLEWARE, 'whitenoise.middleware.WhiteNoiseMiddleware']
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
