@@ -157,14 +157,14 @@ if not DEBUG:
     DATABASES = {
         "default": db_config
     }
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-
-
-
-if os.getcwd() == '/app':
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
     MIDDLEWARE = [*MIDDLEWARE, 'whitenoise.middleware.WhiteNoiseMiddleware']
     # SECURE_SSL_REDIRECT = True
     # SESSION_COOKIE_SECURE = True
+    # CSRF_COOKIE_SECURE = True
+
+
+
+# if os.getcwd() == '/app':
+#     # SECURE_SSL_REDIRECT = True
+#     # SESSION_COOKIE_SECURE = True

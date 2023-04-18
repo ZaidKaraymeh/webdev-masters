@@ -1,0 +1,49 @@
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("/static/images/hero2.7e68d1f40362.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  object-fit: cover;
+  width: auto;
+  height: auto;
+  display: block;
+  /* opacity: 0.9; */
+}
+
+.language-logos {
+    background-color: rgb(32, 32, 32);
+}
+
+.language-logo {
+    width: 150px;
+    height: 150px;
+    margin: 0 10px;
+    padding: 5px;
+}
+
+.fs-p {
+    font-size: 1.25rem;
+}
+
+.bg-off-white {
+    background-color: #FAFAFA;
+}
+
+.bg-aqua {
+    background-color: #fafeff;
+}
+
+.card-hover {
+    transition: all .2s ease-in-out; 
+}
+
+.card-hover:hover h5 {
+    background: -webkit-linear-gradient(right, rgb(226, 62, 130),rgb(86, 241, 223));
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-hover:hover {
+    transform: scale(1.02);
+}
