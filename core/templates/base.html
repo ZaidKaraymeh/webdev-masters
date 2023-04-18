@@ -33,22 +33,22 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="#"
+              <a class="nav-link active" href="#courses"
                 >Courses
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link active" href="#learnnow">Learn Now</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Register</a>
-            </li>
+            </li> -->
             <!-- <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -76,8 +76,9 @@
         <!-- alerts -->
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}" role="alert">
-                    {{ message }}
+                <div class="alert alert-{{ message.tags }} m-0 alert-dismissible fade show text-cebter" role="alert">
+                    <strong> {{ message }} </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             {% endfor %}
         {% endif %}
