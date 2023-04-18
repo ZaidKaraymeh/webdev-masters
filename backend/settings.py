@@ -30,9 +30,9 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = [host for host in os.environ['ALLOWED_HOSTS'].split(',')] if os.environ['ALLOWED_HOSTS'] else ["*"]
+ALLOWED_HOSTS = [str(host) for host in os.environ['ALLOWED_HOSTS'].split(',')] if os.environ['ALLOWED_HOSTS'] else ["*"]
 
-CSRF_TRUSTED_ORIGINS = [host for host in os.environ['CSRF_TRUSTED_ORIGINS'].split(',')] if os.environ['CSRF_TRUSTED_ORIGINS'] else ["*"]
+CSRF_TRUSTED_ORIGINS = [str(host) for host in os.environ['CSRF_TRUSTED_ORIGINS'].split(',')] if os.environ['CSRF_TRUSTED_ORIGINS'] else ["*"]
 
 # Application definition
 
@@ -152,4 +152,4 @@ if os.getcwd() == '/app':
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
     MIDDLEWARE = [*MIDDLEWARE, 'whitenoise.middleware.WhiteNoiseMiddleware']
     SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
+    # SESSION_COOKIE_SECURE = True
