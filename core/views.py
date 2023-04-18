@@ -13,15 +13,6 @@ def home(request):
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
-        mailing_list_form = MailingListForm(request.POST)
-        if mailing_list_form.is_valid():
-            email = mailing_list_form.save(commit=False)
-            if MailingList.objects.filter(email=email.email).exists():
-                messages.warning(request, 'You are already on our mailing list!')
-                return redirect('home')
-            email.save()
-            messages.success(request, 'You have been added to our mailing list!')
-            return redirect('home')
         
 
         if form.is_valid():
@@ -37,6 +28,15 @@ def home(request):
             messages.success(request, 'Your message has been sent!')
             return redirect('home')
 
+        mailing_list_form = MailingListForm(request.POST)
+        if mailing_list_form.is_valid():
+            email = mailing_list_form.save(commit=False)
+            if MailingList.objects.filter(email=email.email).exists():
+                messages.warning(request, 'You are already on our mailing list!')
+                return redirect('home')
+            email.save()
+            messages.success(request, 'You have been added to our mailing list!')
+            return redirect('home')
     else:
         form = ContactForm()
         mailing_list_form = MailingListForm()
