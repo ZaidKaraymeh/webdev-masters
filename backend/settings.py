@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG']
+DEBUG = False
 
 ALLOWED_HOSTS = [str(host) for host in os.environ['ALLOWED_HOSTS'].split(',')] if os.environ['ALLOWED_HOSTS'] else ["*"]
 
@@ -146,6 +146,21 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+
+
+if not DEBUG:
+    import dj_database_url
+
+    DATABASE_URL = os.environ["DATABASE_URL"]
+    db_config = dj_database_url.config(default=DATABASE_URL, conn_max_age=1800)
+    db_config['ENGINE'] = 'django.db.backends.postgresql'
+    DATABASES = {
+        "default": db_config
+    }
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
 
 
 if os.getcwd() == '/app':
