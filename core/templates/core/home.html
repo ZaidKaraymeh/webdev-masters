@@ -42,7 +42,7 @@
     <img class="language-logo" src="{% static 'images/dj.jpg' %}" alt="" />
   </div>
 </section>
-<section class="bg-off-white">
+<section class="bg-white py-5">
   <div class="p-3 container py-5">
     <h3 class="text-center">Hello</h3>
     <h2 class="text-center text-decoration-underline">I'm Zaid Karaymeh.</h2>
@@ -53,7 +53,7 @@
     </p>
   </div>
 </section>
-<section class="bg-white">
+<section class="bg-off-white py-5">
   <div class="container py-5">
     <h3 class="text-center mb-3 text-decoration-underline">
       Why learn programming skills with me?
@@ -147,6 +147,7 @@
               You will learn how to build responsive websites and how to use CSS
               frameworks like Bootstrap.
             </p>
+            <a  class="btn btn-primary d-block" href="#learnnow" > Register Now</a>
           </div>
         </div>
       </div>
@@ -167,6 +168,8 @@
               built-in features to build websites. We will learn by doing
               projects such as a blog website, an e-commerce store, and more.
             </p>
+            <a  class="btn btn-primary d-block" href="#learnnow" > Register Now</a>
+
           </div>
         </div>
       </div>
@@ -259,7 +262,9 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="mailingListLabel">Modal title</h5>
+          <h5 class="modal-title" id="mailingListLabel">
+            Join Our MailingList
+          </h5>
           <button
             type="button"
             class="btn-close"
@@ -267,23 +272,37 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">...</div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-body">
+          <p>We will notify you about any new courses or deals.</p>
+          <form method="post" onsubmit="preventDefault()">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              {{ mailing_list_form.email}}
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pt-5 bg-off-white">
+<section class="py-5 bg-off-white">
   <div id="learnnow" class="container">
     <div class="card p-5 shadow">
       <div class="card-title p-3">
@@ -295,6 +314,10 @@
           <div class="mb-3">
             <label for="phone" class="form-label">Subject</label>
             {{ form.subject}}
+          </div>
+          <div class="mb-3">
+            <label for="course" class="form-label">Course</label>
+            {{ form.course}}
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"

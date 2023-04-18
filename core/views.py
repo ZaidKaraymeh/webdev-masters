@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from .models import Contact
-from .forms import ContactForm
+from .models import Contact, MailingList
+from .forms import ContactForm, MailingListForm
 from django.core.mail import send_mail
 import os
 from django.contrib import messages
@@ -13,6 +13,17 @@ def home(request):
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
+        mailing_list_form = MailingListForm(request.POST)
+        if mailing_list_form.is_valid():
+            email = mailing_list_form.save(commit=False)
+            if MailingList.objects.filter(email=email.email).exists():
+                messages.warning(request, 'You are already on our mailing list!')
+                return redirect('home')
+            email.save()
+            messages.success(request, 'You have been added to our mailing list!')
+            return redirect('home')
+        
+
         if form.is_valid():
             contact = form.save()
             send_mail(
@@ -28,9 +39,11 @@ def home(request):
 
     else:
         form = ContactForm()
+        mailing_list_form = MailingListForm()
 
     context = {
-        'form': form
+        'form': form,
+        'mailing_list_form': mailing_list_form
     }
 
     return render(request, 'core/home.html', context)

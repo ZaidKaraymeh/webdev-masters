@@ -23,3 +23,10 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+    
+class MailingList(models.Model):
+    email = models.EmailField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email + " - " + self.created_at.strftime("%d/%m/%Y %H:%M")
