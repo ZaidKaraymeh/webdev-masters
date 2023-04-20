@@ -8,7 +8,6 @@
   width: auto;
   height: 600px;
   display: block;
-  /* opacity: 0.9; */
 }
 
 .language-logos {
@@ -75,4 +74,11 @@ footer img {
 
 #scrollUpButton:hover {
   background-color: #555;
+}
+
+@media only screen and (max-width: 768px) {
+  .hero {
+    background-size: auto 100%; /* Adjust background size for mobile view */
+    height: 400px; /* Adjust height for mobile view */
+  }
 }
