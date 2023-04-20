@@ -78,10 +78,12 @@ footer img {
 
 @media only screen and (max-width: 768px) {
   .hero {
-    object-fit: fill;
-    -webkit-background-size: fill;
-  -moz-background-size: fill;
-  -o-background-size: fill;
-  background-size: fill;
+    object-fit: cover;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: auto;
+  height: 600px;
   }
 }
