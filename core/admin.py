@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contact, Course, MailingList
+from .models import Contact, Course, MailingList, Unit, Topic
 
 
 # Register your models here.
@@ -8,3 +8,5 @@ from .models import Contact, Course, MailingList
 admin.site.register(Contact)
 admin.site.register(Course)
 admin.site.register(MailingList)
+admin.site.register(Unit)
+admin.site.register(Topic)

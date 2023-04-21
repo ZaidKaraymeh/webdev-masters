@@ -3,7 +3,7 @@
 <section class="hero">
   <div
     class="d-flex flex-column justify-content-center align-items-center text-white"
-    style="height: 600px;"
+    style="height: 600px"
   >
     <h1 class="text-center">Start Your Web Development Journey</h1>
     <h2>
@@ -131,7 +131,34 @@
   <div class="container" id="courses">
     <h2 class="text-center my-2 mb-4">Available Courses</h2>
     <div class="row">
+      {% for course in courses %}
       <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
+      <a  class="text-decoration-none text-black" href="{% url 'course-detail' course.slug %}">
+          <div class="card p-0 shadow card-hover">
+            {% if course.image %}
+
+            <img
+              src="{{ course.image.url }}"
+              class="card-img-top p-0"
+              alt="..."
+            />
+            {% else %}
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            {% endif %}
+            <div class="card-body">
+              <h5 class="border-bottom py-2 text-center fw-bold">
+                {{ course.name}}
+              </h5>
+              <p class="card-text">{{ course.hook|safe }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+
+      <!-- <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
         <div class="card p-0 shadow card-hover">
           <img
             src="{% static 'images/htmlcss.webp' %}"
@@ -169,6 +196,14 @@
               projects such as a blog website, an e-commerce store, and more.
             </p>
             <a  class="btn btn-primary d-block" href="#learnnow" > Register Now</a>
+            <a
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#fullStackDjango"
+                href="#"
+              >
+                Get Notified When The Course is Out
+              </a>
 
           </div>
         </div>
@@ -247,7 +282,7 @@
             </p>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -263,6 +298,55 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="mailingListLabel">
+            Join Our MailingList
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>We will notify you about any new courses or deals.</p>
+          <form method="post" onsubmit="preventDefault()">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              {{ mailing_list_form.email}}
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="modal fade"
+    id="fullStackDjango"
+    tabindex="-1"
+    aria-labelledby="fullStackDjangoLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="fullStackDjangoLabel">
             Join Our MailingList
           </h5>
           <button
@@ -341,16 +425,28 @@
     </div>
   </div>
 </section>
-<button onclick="topFunction()" class="shadow-lg border rounded-circle" id="scrollUpButton" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
+<button
+  onclick="topFunction()"
+  class="shadow-lg border rounded-circle"
+  id="scrollUpButton"
+  title="Go to top"
+>
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
 <script>
-// Get the button
+  // Get the button
   let mybutton = document.getElementById("scrollUpButton");
 
   // When the user scrolls down 20px from the top of the document, show the button
-  window.onscroll = function() {scrollFunction()};
+  window.onscroll = function () {
+    scrollFunction();
+  };
 
   function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
       mybutton.style.display = "block";
     } else {
       mybutton.style.display = "none";

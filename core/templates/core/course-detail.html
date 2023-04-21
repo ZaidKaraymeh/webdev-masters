@@ -1,0 +1,163 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="bg-off-white">
+  <div class="container py-5">
+    <div class="row">
+      <img
+        style="height: 600px; object-fit: fill"
+        src="{{course.image.url}}"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-xl-6 col-md-12 pe-5">
+        <h1>{{ course.name }}</h1>
+        {{ course.description|safe }}
+      </div>
+      <div class="col-xl-6 col-md-12 ps-5">
+        <ul class="list-group shadow">
+          <li class="list-group-item list-group-item-action bg-lg-1"></li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-globe"></i>
+              </div>
+              <div class="col-11">Live Sessions</div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-laptop"></i>
+              </div>
+              <div class="col-11">Excersizes & Homeworks (with solutions)</div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-hourglass-start"></i>
+              </div>
+              <div class="col-11">
+                {{course.duration}} Hours of Live Lessons
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-person-chalkboard"></i>
+              </div>
+              <div class="col-11">{{course.number_of_lessons}} Lessons</div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-sheet-plastic"></i>
+              </div>
+              <div class="col-11">Cheat Sheets</div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-hammer"></i>
+              </div>
+              <div class="col-11">Project-based Learning</div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-certificate fa-xl"></i>
+              </div>
+              <div class="col-11">Certificate of Participation</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <a class="btn btn-primary btn-lg mt-5 shadow" href="#enroll">
+        Enroll Now
+      </a>
+    </div>
+  </div>
+</section>
+<div class="bg-lg-1 p-2"></div>
+<section class="bg-off-white">
+  <div class="container py-5 mw-600">
+    <h2 class="">Course Objectives</h2>
+    {{course.end_of_course_objectives|safe}}
+  </div>
+</section>
+<div class="bg-lg-1 p-2"></div>
+<section class="bg-white">
+  <div class="container py-5 mw-600">
+    <h2 class="">Skills you will learn</h2>
+    {{course.skills_you_will_learn|safe}}
+  </div>
+</section>
+<div class="bg-lg-1 p-2"></div>
+<section class="bg-off-white">
+  <div class="container py-5 mw-600">
+    <h2 class="">Who is this course for?</h2>
+    {{course.who_this_course_is_for|safe}}
+  </div>
+</section>
+<div class="bg-lg-1 p-2"></div>
+<section class="bg-white">
+  <div class="container py-5 mw-600">
+    <h2 class="">{{course.requirements|safe}}</h2>
+  </div>
+</section>
+<div class="bg-lg-1 p-2"></div>
+<section class="bg-white">
+  <div class="container py-5 mw-600">
+    <h2 class="">Course Curriculum</h2>
+    {% for unit in course.units.all %}
+    <ul class="list-group shadow my-3">
+      <li
+        class="list-group-item list-group-item-action bg-lg-1 text-light py-3"
+      >
+        Unit {{forloop.counter}} - {{unit.name}}
+      </li>
+
+      {% for topic in unit.topics.all %}
+        <li class="list-group-item list-group-item-action">
+          <div class="row">
+            <div class="col-1 d-flex justify-content-center align-items-center">
+              <i class="fa-brands fa-xl fa-youtube"></i>
+            </div>
+            <div class="col-11">
+              {{forloop.counter}} - {{topic.name}}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock content %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Contact, MailingList
+from .models import Contact, MailingList, Course, Unit, Topic
 from .forms import ContactForm, MailingListForm
 from django.core.mail import send_mail
 import os
@@ -41,9 +41,25 @@ def home(request):
         form = ContactForm()
         mailing_list_form = MailingListForm()
 
+
+    courses = Course.objects.filter().order_by('created_at')
+    featured_courses = Course.objects.filter(is_published=True, is_featured=True)
+
+
     context = {
         'form': form,
-        'mailing_list_form': mailing_list_form
+        'mailing_list_form': mailing_list_form,
+        'courses': courses,
+        'featured_courses': featured_courses,
     }
 
     return render(request, 'core/home.html', context)
+
+
+def course(request, slug):
+    course = Course.objects.get(slug=slug)
+    context = {
+        'course': course,
+    }
+
+    return render(request, 'core/course-detail.html', context)

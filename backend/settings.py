@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'users',
     'core',
     'crispy_forms',
+    'ckeditor',
+    'cloudinary',
+
 ]
 
 MIDDLEWARE = [
@@ -147,6 +150,59 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        # 'skin': 'office2013',
+        'toolbar_Basic': [
+            ['Source', '-', 'Bold', 'Italic', 'CodeSnippet']
+        ],
+
+        'toolbar_CustomConfig': [
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize', 'Undo', 'Redo', 'Maximize', 'ShowBlocks']},
+            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates', 'TextField', 'Textarea', "Image"]},
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat', 'CodeSnippet']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
+                       'Language']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            #'/',  # put this to force next toolbar on new line
+        ],
+
+        'codeSnippet_theme': 'monokai',
+        'codeSnippet_languages': {
+            'python':"Python",
+            'javascript':"Javascript"
+        },
+
+        'toolbar': 'CustomConfig',
+        'extraPlugins': ','.join(
+            ['codesnippet']
+        )
+
+    }
+}
+
+import dj_database_url
+
+DATABASE_URL = os.environ["DATABASE_URL"]
+db_config = dj_database_url.config(default=DATABASE_URL, conn_max_age=1800)
+db_config['ENGINE'] = 'django.db.backends.postgresql'
+DATABASES = {
+    "default": db_config
+}
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.environ.get('CLOUD_NAME'),
+    "API_KEY": os.environ.get('API_KEY'),
+    "API_SECRET": os.environ.get('API_SECRET')
+}
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 
 if not DEBUG:
     import dj_database_url
