@@ -43,6 +43,10 @@
   -webkit-text-fill-color: transparent;
 }
 
+.bg-lg-1 {
+  background: linear-gradient(45deg, #e23e82, #56f1df);
+
+}
 .card-hover:hover {
     transform: scale(1.02);
 }
@@ -76,12 +80,18 @@ footer img {
   background-color: #555;
 }
 
+.mw-600 {
+    max-width: 800px;
+}
+
 @media only screen and (max-width: 768px) {
   .hero {
-    object-fit: fill;
-    -webkit-background-size: fill;
-  -moz-background-size: fill;
-  -o-background-size: fill;
-  background-size: fill;
+    object-fit: cover;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: auto;
+  height: 600px;
   }
 }
