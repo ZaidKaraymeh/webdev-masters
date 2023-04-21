@@ -136,7 +136,7 @@
   <div class="container py-5 mw-600">
     <h2 class="text-center">Course Curriculum</h2>
     {% for unit in course.units.all %}
-    <ul class="list-group shadow my-5">
+    <ul class="list-group shadow my-5 ">
       <li
         class="list-group-item list-group-item-action bg-lg-1 text-light py-3"
       >
@@ -144,7 +144,7 @@
       </li>
 
       {% for topic in unit.topics.all %}
-        <li class="list-group-item list-group-item-action">
+        <li class="list-group-item list-group-item-action  topic">
           <div class="row">
             <div class="col-1 d-flex justify-content-center align-items-center">
               <i class="fa-brands fa-xl fa-youtube"></i>

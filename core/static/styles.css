@@ -94,4 +94,8 @@ footer img {
   height: 600px;
   display: block;
   }
+
+  .topic {
+    padding: 12px 25px;
+  }
 }
