@@ -35,8 +35,8 @@ class Course(models.Model):
 
     end_of_course_objectives = RichTextField(null=True)
     skills_you_will_learn = RichTextField(null=True)
-    who_this_course_is_for = RichTextField(null=True)
-    requirements = RichTextField(null=True)
+    who_this_course_is_for = models.TextField(null=True)
+    requirements = models.TextField(null=True)
 
     units = models.ManyToManyField('core.Unit', blank=True)
 

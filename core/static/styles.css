@@ -86,12 +86,12 @@ footer img {
 
 @media only screen and (max-width: 768px) {
   .hero {
-    object-fit: cover;
-    -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+    all: unset;
+    background: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("/static/images/hero2.jpg") no-repeat center center ; 
   background-size: cover;
+  object-fit: cover;
   width: auto;
   height: 600px;
+  display: block;
   }
 }

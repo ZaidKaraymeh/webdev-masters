@@ -4,7 +4,7 @@
   <div class="container py-5">
     <div class="row">
       <img
-        style="height: 600px; object-fit: fill"
+        style="max-height: 600px; object-fit: contain"
         src="{{course.image.url}}"
         alt=""
       />
@@ -15,11 +15,11 @@
 <section class="bg-white">
   <div class="container py-5">
     <div class="row">
-      <div class="col-xl-6 col-md-12 pe-5">
+      <div class="col-xl-6 col-md-12 pe-xl-5">
         <h1>{{ course.name }}</h1>
         {{ course.description|safe }}
       </div>
-      <div class="col-xl-6 col-md-12 ps-5">
+      <div class="col-xl-6 col-md-12 ps-xl-5">
         <ul class="list-group shadow">
           <li class="list-group-item list-group-item-action bg-lg-1"></li>
           <li class="list-group-item list-group-item-action">
@@ -107,34 +107,33 @@
 <div class="bg-lg-1 p-2"></div>
 <section class="bg-off-white">
   <div class="container py-5 mw-600">
-    <h2 class="">Course Objectives</h2>
+    <h2 class="text-center">Course Objectives</h2>
     {{course.end_of_course_objectives|safe}}
   </div>
 </section>
 <div class="bg-lg-1 p-2"></div>
 <section class="bg-white">
   <div class="container py-5 mw-600">
-    <h2 class="">Skills you will learn</h2>
+    <h2 class="text-center">Skills you will learn</h2>
     {{course.skills_you_will_learn|safe}}
   </div>
 </section>
 <div class="bg-lg-1 p-2"></div>
-<section class="bg-off-white">
+<section class="bg-off-white text-center">
   <div class="container py-5 mw-600">
     <h2 class="">Who is this course for?</h2>
-    {{course.who_this_course_is_for|safe}}
+    <p>
+      {{course.who_this_course_is_for}}
+    </p>
+    <p>
+      {{course.requirements}}
+    </p>
   </div>
 </section>
 <div class="bg-lg-1 p-2"></div>
 <section class="bg-white">
   <div class="container py-5 mw-600">
-    <h2 class="">{{course.requirements|safe}}</h2>
-  </div>
-</section>
-<div class="bg-lg-1 p-2"></div>
-<section class="bg-white">
-  <div class="container py-5 mw-600">
-    <h2 class="">Course Curriculum</h2>
+    <h2 class="text-center">Course Curriculum</h2>
     {% for unit in course.units.all %}
     <ul class="list-group shadow my-3">
       <li
