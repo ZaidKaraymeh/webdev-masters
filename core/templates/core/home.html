@@ -131,9 +131,13 @@
   <div class="container" id="courses">
     <h2 class="text-center my-2 mb-4">Available Courses</h2>
     <div class="row">
-      {% for course in courses %}
+      {% for course in courses %} {% if course.is_published %}
+
       <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
-      <a  class="text-decoration-none text-black" href="{% url 'course-detail' course.slug %}">
+        <a
+          class="text-decoration-none text-black"
+          href="{% url 'course-detail' course.slug %}"
+        >
           <div class="card p-0 shadow card-hover">
             {% if course.image %}
 
@@ -156,7 +160,44 @@
           </div>
         </a>
       </div>
-      {% endfor %}
+      {% else %}
+      <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
+        <a
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#mailingList"
+          href="#"
+          class="text-decoration-none text-black"
+        >
+          <div class="card p-0 shadow card-hover">
+            {% if course.image %}
+
+            <img
+              src="{{ course.image.url }}"
+              class="card-img-top p-0"
+              alt="..."
+            />
+            {% else %}
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            {% endif %}
+            <div class="card-body">
+              <h5 class="border-bottom py-2 text-center fw-bold">
+                {{ course.name}}
+              </h5>
+              <p class="card-text text-center">
+                Coming Soon!
+              </p>
+              <p class="text-success text-center text-decoration-underline">
+                Get Notified When The Course is Out
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      {% endif %} {% endfor %}
 
       <!-- <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
         <div class="card p-0 shadow card-hover">
@@ -419,7 +460,7 @@
               We'll never share your phone number with anyone else.
             </div>
           </div>
-          <button type="submit" class="btn btn-primary ">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contact, MailingList
+from .models import Contact, MailingList, CourseRegistration
 
 class ContactForm(forms.ModelForm):
 
@@ -16,6 +16,16 @@ class ContactForm(forms.ModelForm):
         self.fields['phone'].widget.attrs.update({'class': 'form-control', 'aria-describedby': 'phoneHelp'})
         self.fields['course'].widget.attrs.update({'class': 'form-control', 'aria-describedby': 'courseHelp'})
 
+
+class CourseRegisterForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):  
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'class': 'form-control', 'aria-describedby': 'emailHelp'})
+        self.fields['phone'].widget.attrs.update({'class': 'form-control', 'aria-describedby': 'phoneHelp'})
+        
+    class Meta:
+        model = CourseRegistration
+        fields = ["email", "phone"]
 
 
 class MailingListForm(forms.ModelForm):

@@ -5,7 +5,7 @@
     <div class="row">
       <img
         class="img-fluid w-100"
-        style="max-height: 900px; object-fit: contain; min-width: 100%;"
+        style="max-height: 900px; object-fit: contain; min-width: 100%"
         src="{{course.image.url}}"
         alt=""
       />
@@ -14,7 +14,7 @@
 </section>
 
 <section class="bg-white">
-  <div class="container py-5">
+  <div class="container py-5 p-3">
     <div class="row">
       <div class="col-xl-6 col-md-12 pe-xl-5">
         <h1>{{ course.name }}</h1>
@@ -98,8 +98,8 @@
         </ul>
       </div>
     </div>
-    <div class="row">
-      <a class="btn btn-primary btn-lg mt-5 shadow" href="#enroll">
+    <div class="row p-3">
+      <a class="btn btn-primary btn-lg mt-5 shadow" href="#register">
         Enroll Now
       </a>
     </div>
@@ -107,36 +107,55 @@
 </section>
 <div class="bg-lg-1 p-2"></div>
 <section class="bg-off-white">
-  <div class="container py-5 mw-600">
+  <div class="container py-5 mw-600 p-3">
     <h2 class="text-center">Course Objectives</h2>
     {{course.end_of_course_objectives|safe}}
   </div>
 </section>
 <div class="bg-lg-1 p-2"></div>
 <section class="bg-white">
-  <div class="container py-5 mw-600">
+  <div class="container py-5 mw-600 p-3">
     <h2 class="text-center">Skills you will learn</h2>
     {{course.skills_you_will_learn|safe}}
   </div>
 </section>
 <div class="bg-lg-1 p-2"></div>
-<section class="bg-off-white text-center">
-  <div class="container py-5 mw-600">
+<section class="bg-off-white text-justify">
+  <div class="container py-5 mw-600 p-3">
     <h2 class="">Who is this course for?</h2>
-    <p>
-      {{course.who_this_course_is_for}}
-    </p>
-    <p>
-      {{course.requirements}}
-    </p>
+    <p>{{course.who_this_course_is_for}}</p>
+    <p>{{course.requirements}}</p>
+  </div>
+</section>
+<div class="bg-lg-1 p-2"></div>
+
+<section class="bg-off-white text-justfy">
+  <div class="container py-5 mw-600 p-3">
+    <div class="row">
+      <h2 class="">How & where will the course be conducted?</h2>
+      <p>
+        The course will be conducted online via Discord. You will be provided
+        with a link to join the server. We will be learning together as a group
+        in a live call with 1 hour sessions. The class schedule for this course
+        will be three times per week. A tutorial will be presented in these live
+        sessions and exercises will be solved. Homeworks will be given and
+        solutions will be provided. You will be able to ask questions and get
+        help from the instructor and other students in the class.
+      </p>
+    </div>
+    <div class="row p-3">
+      <a class="btn btn-primary btn-lg mt-5 shadow" href="#register">
+        Enroll Now
+      </a>
+    </div>
   </div>
 </section>
 <div class="bg-lg-1 p-2"></div>
 <section class="bg-white">
-  <div class="container py-5 mw-600">
+  <div class="container py-5 mw-600 p-3">
     <h2 class="text-center">Course Curriculum</h2>
     {% for unit in course.units.all %}
-    <ul class="list-group shadow my-5 ">
+    <ul class="list-group shadow my-5">
       <li
         class="list-group-item list-group-item-action bg-lg-1 text-light py-3"
       >
@@ -144,19 +163,94 @@
       </li>
 
       {% for topic in unit.topics.all %}
-        <li class="list-group-item list-group-item-action  topic">
-          <div class="row">
-            <div class="col-1 d-flex justify-content-center align-items-center">
-              <i class="fa-brands fa-xl fa-youtube"></i>
-            </div>
-            <div class="col-11">
-              {{forloop.counter}} - {{topic.name}}
-            </div>
+      <li class="list-group-item list-group-item-action topic">
+        <div class="row">
+          <div class="col-1 d-flex justify-content-center align-items-center">
+            <i class="fa-brands fa-xl fa-youtube"></i>
           </div>
-        </li>
+          <div class="col-11">{{forloop.counter}} - {{topic.name}}</div>
+        </div>
+      </li>
       {% endfor %}
     </ul>
     {% endfor %}
+  </div>
+</section>
+<div class="bg-lg-1 p-2"></div>
+<section class="bg-off-white">
+  <div id="register" class="container py-5 mw-600 p-3">
+    <div class="row p-3">
+      <div class="card p-md-5 shadow">
+        <div class="card-title p-3 m-0">
+          <h1>Register Now</h1>
+          <p class="text-muted" >We will contact you shortly after registering to proceed with payment</p>
+          {% if not course.discount %}
+            <h3 class="text-dark">BHD{{course.price}}</h3>
+            {% else %}
+            asdasd
+            <h3 class="text-dark">BHD{{course.discounted_price}}$</h3>
+          {% endif %}
+        </div>
+
+        <div class="card-body">
+          <form method="post" onsubmit="preventDefault()">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              {{ form.email}}
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              {{ form.phone}}
+              <div id="phoneHelp" class="form-text">
+                We'll never share your phone number with anyone else.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="bg-lg-1 p-2"></div>
+<section class="bg-white-white">
+  <div id="register" class="container py-5 mw-600 p-3">
+    <div class="row p-3">
+      <div class="card p-md-5 shadow">
+        <div class="card-title p-3 m-0">
+          <h1>Register Now</h1>
+          <p class="text-muted" >We will contact you shortly after registering to proceed with payment</p>
+        </div>
+        <div class="card-body">
+          <form method="post" onsubmit="preventDefault()">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              {{ form.email}}
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              {{ form.phone}}
+              <div id="phoneHelp" class="form-text">
+                We'll never share your phone number with anyone else.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

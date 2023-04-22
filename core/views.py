@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .models import Contact, MailingList, Course, Unit, Topic
-from .forms import ContactForm, MailingListForm
+from .forms import ContactForm, MailingListForm, CourseRegisterForm
 from django.core.mail import send_mail
 import os
 from django.contrib import messages
@@ -57,9 +57,34 @@ def home(request):
 
 
 def course(request, slug):
+
+
+    if request.method == 'POST':
+        form = CourseRegisterForm(request.POST)
+        if form.is_valid():
+            contact = form.save()
+            send_mail(
+                contact.subject,
+                "Confirmation Email for " + contact.email + " with phone number " + contact.phone + ".\n Course: " + contact.course.name + ".\n We will contact you shortly on whatsapp to confirm your registration and proceed with payment.",
+                os.environ.get('EMAIL_HOST_USER'),
+                [contact.email],
+                fail_silently=False,
+            )
+            form = CourseRegisterForm()
+            messages.success(request, 'We will contact you shortly to proceed with payment!')
+            return redirect('home')
+        else:
+            messages.warning(request, 'Something went wrong!')
+            return redirect('home')
+
+    else:
+        form = CourseRegisterForm()
+
     course = Course.objects.get(slug=slug)
     context = {
         'course': course,
+        'form': form,
+
     }
 
     return render(request, 'core/course-detail.html', context)

@@ -84,3 +84,14 @@ class MailingList(models.Model):
 
     def __str__(self):
         return self.email + " - " + self.created_at.strftime("%d/%m/%Y %H:%M")
+
+class CourseRegistration(models.Model):
+    course = models.ForeignKey('core.Course', on_delete=models.CASCADE)
+    
+    email = models.EmailField()
+    phone = models.CharField(max_length=30)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email + " - " + self.created_at.strftime("%d/%m/%Y %H:%M")
