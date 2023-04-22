@@ -185,48 +185,12 @@
           <h1>Register Now</h1>
           <p class="text-muted" >We will contact you shortly after registering to proceed with payment</p>
           {% if not course.discount %}
-            <h3 class="text-dark">BHD{{course.price}}</h3>
+            <h3 class="text-dark">BHD{{course.price}}  </h3>
             {% else %}
-            asdasd
-            <h3 class="text-dark">BHD{{course.discounted_price}}$</h3>
+            <h3 class="text-dark">BHD{{course.discounted_price}} <small class="text-muted text-decoration-line-through" > {{course.price}} </small> </h3>
           {% endif %}
         </div>
 
-        <div class="card-body">
-          <form method="post" onsubmit="preventDefault()">
-            {% csrf_token %}
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label"
-                >Email address</label
-              >
-              {{ form.email}}
-              <div id="emailHelp" class="form-text">
-                We'll never share your email with anyone else.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="phone" class="form-label">Phone Number</label>
-              {{ form.phone}}
-              <div id="phoneHelp" class="form-text">
-                We'll never share your phone number with anyone else.
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="bg-lg-1 p-2"></div>
-<section class="bg-white-white">
-  <div id="register" class="container py-5 mw-600 p-3">
-    <div class="row p-3">
-      <div class="card p-md-5 shadow">
-        <div class="card-title p-3 m-0">
-          <h1>Register Now</h1>
-          <p class="text-muted" >We will contact you shortly after registering to proceed with payment</p>
-        </div>
         <div class="card-body">
           <form method="post" onsubmit="preventDefault()">
             {% csrf_token %}
