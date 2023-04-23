@@ -1,0 +1,204 @@
+{% extends 'base.html' %}  {% load tags %} {% block content %}
+
+<section class="bg-off-white">
+  <div class="container py-5">
+    <div class="row">
+      <img
+        class="img-fluid w-100"
+        style="max-height: 900px; object-fit: contain; min-width: 100%"
+        src="{{bundle.image.url}}"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="container py-5 p-3">
+    <div class="row">
+      <div class="col-xl-6 col-md-12 pe-xl-5">
+        <h1>{{ bundle.name }}</h1>
+        {{ bundle.description|safe }}
+      </div>
+      <div class="col-xl-6 col-md-12 ps-xl-5">
+        <ul class="list-group shadow">
+          <li class="list-group-item list-group-item-action bg-lg-1"></li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-globe"></i>
+              </div>
+              <div class="col-11">Live Sessions</div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-laptop"></i>
+              </div>
+              <div class="col-11">Exercises & Homeworks (with solutions)</div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-hourglass-start"></i>
+              </div>
+              <div class="col-11">
+                {{bundle.duration}} Hours of Live Lessons
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-person-chalkboard"></i>
+              </div>
+              <div class="col-11">{{bundle.number_of_lessons}} Interactive Lessons</div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-sheet-plastic"></i>
+              </div>
+              <div class="col-11">Cheat Sheets</div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-xl fa-hammer"></i>
+              </div>
+              <div class="col-11">Project-based Learning</div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="row">
+              <div
+                class="col-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-certificate fa-xl"></i>
+              </div>
+              <div class="col-11">Certificate of Participation</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row p-3">
+      <a class="btn btn-primary btn-lg mt-5 shadow" href="#register">
+        Enroll Now
+      </a>
+    </div>
+  </div>
+</section>
+<div class="bg-lg-1 p-2"></div>
+<section class="bg-off-white">
+  <div class="container py-5 p-3">
+    <div class="row">
+      <h2 class="text-center">Courses In This Bundle</h2>
+    </div>
+    <div class="row">
+    {% for course in bundle.courses.all %}
+      <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
+        <a
+          class="text-decoration-none text-black"
+          href="{% url 'course-detail' course.slug %}"
+        >
+          <div class="card p-0 shadow card-hover">
+            {% if course.image %}
+
+            <img
+              src="{{ course.image.url }}"
+              class="card-img-top p-0"
+              alt="..."
+            />
+            {% else %}
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            {% endif %}
+            <div class="card-body">
+              <h5 class="border-bottom py-2 text-center fw-bold">
+                {{ course.name}}
+              </h5>
+              <p class="card-text">{{ course.hook|safe }}</p>
+            </div>
+          </div>
+        </a>
+    </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+<div class="bg-lg-1 p-2"></div>
+<section class="bg-off-white">
+  <div id="register" class="container py-5 mw-600 p-3">
+    <div class="row p-3">
+      <div class="card p-md-5 shadow">
+        <div class="card-title p-3 m-0">
+          <h1>Register Now</h1>
+          <p class="text-muted">
+            We will contact you shortly after registering to proceed with
+            payment
+          </p>
+          {% if bundle.discount == 0 %}
+          <span class="fw-bold fs-5">BHD{{bundle.price}}</span>
+
+          {% else %}
+          <div class="d-flex gap-3 align-items-center">
+
+              <span class="fw-bold fs-5">BHD{{bundle.discount_price}}</span>
+              <span class=" text-decoration-line-through text-muted">
+                  BHD{{bundle.original_price}}
+                </span>
+                <span class="fs-5 text-success fw-bold">
+                    {{bundle.discount}}% off</span
+                    >
+            </div>
+          
+          <h5 class="py-3"> You saved BHD{{ bundle.original_price|subtract:bundle.discount_price}}! </h5>
+          {% endif %}
+        </div>
+
+        <div class="card-body">
+          <form method="post" onsubmit="preventDefault()">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              {{ form.email}}
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              {{ form.phone}}
+              <div id="phoneHelp" class="form-text">
+                We'll never share your phone number with anyone else.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

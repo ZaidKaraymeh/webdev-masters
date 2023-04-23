@@ -8,7 +8,7 @@
     <h1 class="text-center">Start Your Web Development Journey</h1>
     <h2>
       with In-Depth, Beginner Friendly <br />
-      Courses & One-To-One Mentoring
+      Courses & Live Mentoring
     </h2>
     <a
       href="#courses"
@@ -129,8 +129,61 @@
 </section> -->
 <section class="bg-white py-5">
   <div class="container" id="courses">
-    <h2 class="text-center my-2 mb-4">Available Courses</h2>
+    {% if messages %}
+            {% for message in messages %}
+                <div class="p-5 alert alert-{{ message.tags }} m-0 alert-dismissible fade show text-center" role="alert">
+                    <strong> {{ message }} </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    <h2 class="text-center my-4 mb-4">Available Courses</h2>
     <div class="row">
+
+      {% for bundle in bundles %}
+        {% if bundle.is_published %}
+            <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
+        <a
+          class="text-decoration-none text-black"
+          href="{% url 'bundle-detail' bundle.slug %}"
+        >
+          <div class="card p-0 shadow card-hover">
+            {% if bundle.image %}
+
+            <img
+              src="{{ bundle.image.url }}"
+              class="card-img-top p-0"
+              alt="..."
+            />
+            {% else %}
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            {% endif %}
+            <div class="card-body">
+              <h5 class="border-bottom py-2 text-center fw-bold">
+                {{ bundle.name}}
+              </h5>
+              <p class="card-text">{{ bundle.hook|safe }}</p>
+            </div>
+            <div class="card-footer d-flex gap-1 align-items-center">
+              {% if bundle.discount == 0 %}
+                <span class="fw-bold fs-5" >BHD{{bundle.price}}</span>
+              
+              {% else %}
+              
+                <span class="fw-bold fs-5" >BHD{{bundle.discount_price}}</span> 
+                <span class="me-auto text-decoration-line-through text-muted " > BHD{{bundle.original_price}} </span>
+                <span class="fs-5 text-success fw-bold" > {{bundle.discount}}% off</span>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      </div>
+            
+        {% endif %}
+      {% endfor %}
+
       {% for course in courses %} {% if course.is_published %}
 
       <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12 my-2">
@@ -156,6 +209,17 @@
                 {{ course.name}}
               </h5>
               <p class="card-text">{{ course.hook|safe }}</p>
+            </div>
+            <div class="card-footer d-flex gap-1 align-items-center">
+              {% if course.discount == 0 %}
+                <span class="fw-bold fs-5" >BHD{{course.price}}</span>
+              
+              {% else %}
+              
+                <span class="fw-bold fs-5" >BHD{{course.discount_price}}</span> 
+                <span class="me-auto text-decoration-line-through text-muted " > BHD{{course.price}} </span>
+                <span class="fs-5 text-success fw-bold" > {{course.discount}}% off</span>
+              {% endif %}
             </div>
           </div>
         </a>
