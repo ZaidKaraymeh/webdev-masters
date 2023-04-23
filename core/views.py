@@ -48,12 +48,13 @@ def home(request):
 
     sale_message = SaleMessage.objects.first()
     message_flag = False
-    for course in courses:
-        if course.discount > 0:
-            messages.success(request, sale_message.message)
-            message_flag = True
-    
-    if not message_flag:
+
+    while not message_flag:
+        for course in courses:
+            if course.discount > 0:
+                messages.success(request, sale_message.message)
+                message_flag = True
+        
         for bundle in bundles:
             if bundle.discount > 0:
                 messages.success(request, sale_message.message)
