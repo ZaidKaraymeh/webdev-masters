@@ -54,11 +54,19 @@ def home(request):
             if course.discount > 0:
                 messages.success(request, sale_message.message)
                 message_flag = True
+                break;
+        
+        if message_flag:
+            break;
         
         for bundle in bundles:
             if bundle.discount > 0:
                 messages.success(request, sale_message.message)
                 message_flag = True
+                break;
+
+        if message_flag:
+            break;
 
     context = {
         'form': form,
