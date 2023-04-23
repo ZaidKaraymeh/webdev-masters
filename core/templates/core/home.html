@@ -495,19 +495,11 @@
   <div id="learnnow" class="container">
     <div class="card p-md-5 shadow">
       <div class="card-title p-3">
-        <h1>Learn Now</h1>
+        <h1>Contact Us</h1>
       </div>
       <div class="card-body">
         <form method="post" onsubmit="preventDefault()">
           {% csrf_token %}
-          <div class="mb-3">
-            <label for="phone" class="form-label">Subject</label>
-            {{ form.subject}}
-          </div>
-          <div class="mb-3">
-            <label for="course" class="form-label">Course</label>
-            {{ form.course}}
-          </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"
               >Email address</label
@@ -523,6 +515,14 @@
             <div id="phoneHelp" class="form-text">
               We'll never share your phone number with anyone else.
             </div>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Subject</label>
+            {{ form.subject}}
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Message</label>
+            {{ form.description}}
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>

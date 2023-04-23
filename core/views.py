@@ -19,7 +19,7 @@ def home(request):
             contact = form.save()
             send_mail(
                 contact.subject,
-                "Confirmation Email for " + contact.email + " with phone number " + contact.phone + ".",
+                "Contact Email for " + contact.email + " with phone number " + contact.phone + "." + "\n\n" + contact.description,
                 os.environ.get('EMAIL_HOST_USER'),
                 [contact.email],
                 fail_silently=False,

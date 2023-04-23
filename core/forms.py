@@ -5,7 +5,7 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
-        fields = ['email', 'subject', 'phone', 'course']
+        fields = ['email', 'subject', 'phone', 'description']
 
 
     
@@ -14,7 +14,7 @@ class ContactForm(forms.ModelForm):
         self.fields['email'].widget.attrs.update({'class': 'form-control', 'aria-describedby': 'emailHelp'})
         self.fields['subject'].widget.attrs.update({'class': 'form-control', 'aria-describedby': 'subjectHelp'})
         self.fields['phone'].widget.attrs.update({'class': 'form-control', 'aria-describedby': 'phoneHelp'})
-        self.fields['course'].widget.attrs.update({'class': 'form-control', 'aria-describedby': 'courseHelp'})
+        self.fields['description'].widget.attrs.update({'class': 'form-control', 'aria-describedby': 'descriptionHelp'})
 
 
 class CourseRegisterForm(forms.ModelForm):

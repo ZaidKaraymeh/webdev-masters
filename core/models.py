@@ -7,9 +7,9 @@ from ckeditor.fields import RichTextField
 
 class Contact(models.Model):
     email = models.EmailField()
-    subject = models.CharField(max_length=255, default="I would like to register for a course")
-    phone = models.CharField(max_length=255)
-    course = models.ForeignKey('core.Course', on_delete=models.CASCADE, null=True, blank=True)
+    subject = models.CharField(max_length=255)
+    description = models.TextField(max_length=4000, null=True)
+    phone = models.CharField(max_length=30)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
