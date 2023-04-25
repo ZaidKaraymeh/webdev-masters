@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% load tags %}
 
 <section class="bg-off-white">
   <div class="container py-5">
@@ -187,7 +187,18 @@
           {% if not course.discount %}
             <h3 class="text-dark">BHD{{course.price}}  </h3>
             {% else %}
-            <h3 class="text-dark">BHD{{course.discounted_price}} <small class="text-muted text-decoration-line-through" > {{course.price}} </small> </h3>
+            <div class="d-flex gap-3 align-items-center">
+
+              <span class="fw-bold fs-5">BHD{{course.discount_price}}</span>
+              <span class=" text-decoration-line-through text-muted">
+                  BHD{{course.price}}
+                </span>
+                <span class="fs-5 text-success fw-bold">
+                    {{course.discount}}% off</span
+                    >
+            </div>
+            <h5 class="py-3"> You saved BHD{{ course.price|subtract:course.discount_price}}! </h5>
+
           {% endif %}
         </div>
 
